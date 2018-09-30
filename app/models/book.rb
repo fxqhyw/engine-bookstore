@@ -11,7 +11,16 @@ class Book < ApplicationRecord
   validate :correct_images_type
 
   scope :latest, -> { order(created_at: :desc).limit(3) }
-  scope :best_sellers, -> { joins(:order_items).group('id').order(Arel.sql('SUM(order_items.quantity) desc')).limit(4) }
+
+  def self.best_sellers
+    array_of_books = Book.find_by_sql("SELECT books.*, SUM(shopping_cart_order_items.quantity) AS sum_items
+      FROM books
+      INNER JOIN shopping_cart_order_items ON shopping_cart_order_items.product_id = books.id
+      GROUP BY books.id
+      ORDER BY sum_items DESC
+      LIMIT 4")
+    Book.where(id: array_of_books.map(&:id))
+  end
 
   private
 

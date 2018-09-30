@@ -35,7 +35,12 @@ class BooksFilter
   end
 
   def popular
-    @books.left_outer_joins(:order_items).group('id').order(Arel.sql('COUNT(order_items) desc'))
+    array_of_books = @books.find_by_sql("SELECT books.*, SUM(shopping_cart_order_items.quantity) AS sum_items
+    FROM books
+    LEFT OUTER JOIN shopping_cart_order_items ON shopping_cart_order_items.product_id = books.id
+    GROUP BY books.id
+    ORDER BY sum_items DESC")
+    @books.where(id: array_of_books.map(&:id))
   end
 
   def low_to_high_price
