@@ -1,10 +1,10 @@
-ActiveAdmin.register Order do
+ActiveAdmin.register ShoppingCart::Order do
   permit_params :status
 
   actions :index, :show, :edit, :update, :destroy
 
   users = proc { User.pluck(:email, :id) }
-  coupons = proc { Coupon.pluck(:code, :id) }
+  coupons = proc { ShoppingCart::Coupon.pluck(:code, :id) }
 
   scope :in_progress, default: true do |orders|
     orders.where.not(status: :delivered).where.not(status: :canceled)

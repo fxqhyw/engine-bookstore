@@ -23,6 +23,7 @@ gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
 gem 'figaro'
 gem "rectify"
+gem 'shopping_cart', git: 'https://github.com/therealloker/shopping_cart.git', branch: 'develop'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
