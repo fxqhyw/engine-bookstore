@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
-  has_many :orders, dependent: :nullify
-  has_one :shipping_address, dependent: :destroy
-  has_one :billing_address, dependent: :destroy
+  has_many :orders, dependent: :nullify, class_name: 'ShoppingCart::Order', foreign_key: :user_id
+  has_one :shipping_address, dependent: :destroy, class_name: 'ShoppingCart::ShippingAddress', foreign_key: :user_id
+  has_one :billing_address, dependent: :destroy, class_name: 'ShoppingCart::BillingAddress', foreign_key: :user_id
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,

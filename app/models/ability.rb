@@ -6,6 +6,6 @@ class Ability
 
     return unless user.persisted?
     can :create, Review
-    #can %i[read create update], Order, user_id: user.id
+    can %i[read create update], ShoppingCart::Order, user_id: user.id
   end
 end
