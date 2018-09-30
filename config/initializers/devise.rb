@@ -278,5 +278,5 @@ Devise.setup do |config|
   # The router that invoked `devise_for`, in the example above, would be:
   # config.router_name = :my_engine
   #
-  config.omniauth :facebook, "518389978579068", "ff4c4a7da2813497386a9c5894a61c07"
+  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
 end
