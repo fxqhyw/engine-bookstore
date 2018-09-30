@@ -12,6 +12,6 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to root_path
+    redirect_to main_app.root_path
   end
 end

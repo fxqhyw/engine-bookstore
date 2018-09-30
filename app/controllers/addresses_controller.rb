@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
 
   def update
     SettingsAddresser.call(address_params) do
-      on(:ok) { redirect_to address_path, notice: I18n.t('notice.updated') }
+      on(:ok) { redirect_to shopping_cart.address_path, notice: I18n.t('notice.updated') }
       on(:invalid) do |address|
         expose(address: address)
         render :edit

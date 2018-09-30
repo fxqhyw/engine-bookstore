@@ -19,9 +19,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    return checkouts_path if params[:user][:from_checkout]
+    return shopping_cart.checkouts_path if params[:user][:from_checkout]
 
-    root_path
+    main_app.root_path
   end
 
   private
