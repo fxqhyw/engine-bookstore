@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :order do
+  factory :order, class: 'ShoppingCart::Order' do
     total_price { nil }
     status { 'in_progress' }
     user
