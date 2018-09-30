@@ -3,6 +3,6 @@ $('#books-container').append('<%= j render(partial: 'books/page', locals: { book
 <% if @books.last_page? %>
   $("#view-more-books").hide();
 <% else %>
-  $('#view-more-books').attr('href', '<%= catalog_path(page: @books.next_page, category: params[:category], filter: params[:filter]) %>');
+  $('#view-more-books').attr('href', '<%= main_app.catalog_path(page: @books.next_page, category: params[:category], filter: params[:filter]) %>');
 <% end %>
 

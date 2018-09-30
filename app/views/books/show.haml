@@ -18,7 +18,7 @@
       %h1.mt-res-0= @book.title
       %p.lead.small= @book.authors_list
       .row
-        = form_with url: order_items_path, method: :post, remote: true do |f|
+        = form_with url: shopping_cart.order_items_path, method: :post, remote: true do |f|
           .col-xs-12.col-md-4
             %p.h1.in-gold-500.mt-10= price_to_euro(@book.price)
           .col-xs-5.col-md-3
@@ -29,7 +29,7 @@
               %a.input-link.quantity-plus{href: "#"}
                 %i.fa.fa-plus.line-height-40
           .col-xs-7.col-md-5
-            = f.hidden_field :book_id, value: @book.id
+            = f.hidden_field :product_id, value: @book.id
             = f.submit t('button.add_to_cart'), class: 'btn btn-default pull-right general-position'
       .general-info-wrap.divider-lg
         %p= t('page.book.show.description')        

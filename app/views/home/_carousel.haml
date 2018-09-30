@@ -15,11 +15,11 @@
                 %img.img-shadow.general-thumbnail-img{src: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ352GRUKdIFLP3va0Tj7QREidI4lwUABrtUJbQehqIL02O_blo", alt: "design-book"}
           .col-sm-7
             .mb-60
-              %h1= link_to latest_book.title, book_path(latest_book), class: 'text-as-link'
+              %h1= link_to latest_book.title, main_app.book_path(latest_book), class: 'text-as-link'
               %p.lead= truncate(latest_book.description, length: 415)
               %p.lead.small= latest_book.authors_list
               .general-align
-                = link_to t('button.buy_now'), order_items_path(book_id: latest_book.id, quantity: 1), method: :post, class: 'btn btn-primary', remote: true
+                = link_to t('button.buy_now'), shopping_cart.order_items_path(product_id: latest_book.id, quantity: 1), method: :post, class: 'btn btn-primary', remote: true
   %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
     %span.icon-prev{'aria-hidden': "true"}
     %span.sr-only= t('page.home.carusel.prev')

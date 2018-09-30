@@ -14,26 +14,26 @@
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            = link_to t('button.home'), root_path
+            = link_to t('button.home'), main_app.root_path
           %li.dropdown
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('header.shop')
             %ul.dropdown-menu
               - Category.all.each do |category|
                 %li
-                  = link_to category.title, catalog_path(category: category.id), class: 'collapse-link'
+                  = link_to category.title, main_app.catalog_path(category: category.id), class: 'collapse-link'
           - if user_signed_in?
             %li.dropdown
               %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('.header.account')
               %ul.dropdown-menu
                 %li 
-                  = link_to t('header.orders'), orders_path
+                  = link_to t('header.orders'), shopping_cart.orders_path
                 %li
-                  = link_to t('header.settings'), address_path
+                  = link_to t('header.settings'), shopping_cart.address_path
                 %li.divider{role: "separator"}
                 %li
-                  = link_to t('header.logout'), destroy_user_session_path, method: :delete
+                  = link_to t('header.logout'), main_app.destroy_user_session_path, method: :delete
           - else
             %li
-              = link_to t('header.login'), new_user_session_path
+              = link_to t('header.login'), main_app.new_user_session_path
             %li
-              = link_to t('hedaer.signup'), new_user_registration_path
+              = link_to t('hedaer.signup'), main_app.new_user_registration_path
