@@ -16,7 +16,7 @@ class OrderTransfer < Rectify::Command
   private
 
   def find_order
-    @order = Order.find_by_id(cookies.signed[:order_id])
+    @order = ShoppingCart::Order.find_by_id(cookies.signed[:order_id])
   end
 
   def delete_user_in_progress_orders
